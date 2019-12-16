@@ -80,6 +80,8 @@ In .csv files, we often see NULL data defined as a blank space with no informati
           tabela.anoEmissaoEmpenho[5] = '\0';
         }
 ```
+This caractere that was read indicates if the situation "data1;;data3" happens, as in there are none characters in the column and the next caractere read is already the one that indicates the end of the data for the column, since we defined that each column data ends with ';', except the last one.
+
 ## 2. Decimal Values (ex.: Monetary)
 Depending on the .csv file source, monetary values are defined either "1000,00" or "1000.00". Postgres demands the second one. To handle this, in the cases defined fore the columns that these values are presents, the exception is handled, for example, in lines 433 and 434 for case 19:
 ```c
